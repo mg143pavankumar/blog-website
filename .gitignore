@@ -10,3 +10,6 @@
 
 # production
 /build
+
+.env
+config.env

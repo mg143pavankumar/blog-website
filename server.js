@@ -1,17 +1,26 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const Article = require("./models/articleSchema");
 const articlesRouter = require("./routes/articles");
 const app = express();
 
+dotenv.config({ path: "./config.env" });
 const PORT = process.env.PORT || 5000;
+const DB = process.env.DATABASE;
 
-mongoose.connect("mongodb://localhost/blog", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  DB,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Connected to Database");
+  }
+);
 
 app.set("view engine", "ejs");
 
