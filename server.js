@@ -6,7 +6,7 @@ const Article = require("./models/articleSchema");
 const articlesRouter = require("./routes/articles");
 const app = express();
 
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "config.env" });
 const PORT = process.env.PORT || 5000;
 const DB = process.env.DATABASE;
 
@@ -16,6 +16,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   },
   () => {
     console.log("Connected to Database");
