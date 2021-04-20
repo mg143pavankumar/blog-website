@@ -6,10 +6,10 @@ const Article = require("./models/articleSchema");
 const articlesRouter = require("./routes/articles");
 const app = express();
 
-dotenv.config();
+dotenv.config({ path: "config.env" });
 const PORT = process.env.PORT || 5000;
 
-const DB = mongoose.connect(
+mongoose.connect(
   process.env.DATABASE,
   {
     useNewUrlParser: true,
