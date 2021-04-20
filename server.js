@@ -9,8 +9,10 @@ const app = express();
 dotenv.config({ path: "config.env" });
 const PORT = process.env.PORT || 5000;
 
+const DB = process.env.DATABASE.toString();
+
 mongoose.connect(
-  process.env.DATABASE,
+  DB,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
