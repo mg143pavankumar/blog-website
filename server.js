@@ -6,11 +6,11 @@ const Article = require("./models/articleSchema");
 const articlesRouter = require("./routes/articles");
 const app = express();
 
-dotenv.config({ path: "config.env" });
+dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 const DB = mongoose.connect(
-  process.env.DATABASE.toString(),
+  process.env.DATABASE,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
