@@ -11,17 +11,19 @@ const PORT = process.env.PORT || 5000;
 
 const DB = process.env.DATABASE;
 
-mongoose.connect(
-  DB,
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  },
-  () => {
-    console.log("Connected to Database");
-  }
-);
+mongoose.connect(DB, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection
+  .once("open", function () {
+    console.log("Conection has been made!");
+  })
+  .on("error", function (error) {
+    console.log("Error is: ", error);
+  });
 
 app.set("view engine", "ejs");
 
